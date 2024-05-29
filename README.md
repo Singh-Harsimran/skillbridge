@@ -1,8 +1,19 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+                async function loadSkillbridge(skillbridge) {
+                const response = await fetch(skillbridge);
+                const data = await response.json();
+                    window.skillbridge = {};
+                    window.skillbridge = data;
+                    
+                    var link = document.createElement("link");
+                    link.type = "text/css";
+                    link.rel = "stylesheet";
+                    link.href = data.style;
+                    document.head.appendChild(link);
+                    
+                    const script = document.createElement('script');
+                    script.src = data.script;
+                    script.defer = true;
+                    script.type = 'module'
+                    document.body.appendChild(script);
+                }
+                loadSkillbridge("https://hhmelements.com/skillbridge/l5gc/")

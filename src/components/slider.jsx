@@ -1,6 +1,8 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/core';
 import '@splidejs/react-splide/css';
+import Modal from './Form';
+import Button from './Button';
 export default function Slider( ) {
     return (<>
         <div className='skillbridge-slider lg:tw-flex '>
@@ -18,15 +20,15 @@ export default function Slider( ) {
                             <div className='tw-grid lg:tw-grid-cols-3 tw-gap-10 lg:tw-gap-3'>
                                 <div className='tw-text-center'>
                                     <div className='tw-text-xl tw-font-bold tw-mb-3'>PREP CONSULT</div>
-                                    <button className='tw-text-light tw-bg-primary tw-py-2 tw-px-4 tw-rounded-sm'>Contact Us</button>
+                                    <Button fullWidth="true" bg="tw-bg-primary" label="Contact Us"/>
                                 </div>
                                 <div  className='tw-text-center'>
                                     <div className='tw-text-xl tw-font-bold tw-mb-3'>SKILLBRIDGE APPROVAL</div>
-                                    <a href="" className='tw-inline-block tw-text-light tw-bg-primary tw-py-2 tw-px-4 tw-rounded-sm'>Process</a>
+                                    <a href="" className='tw-inline-block tw-bg-primary tw-text-white tw-font-bold tw-uppercase tw-text-sm tw-px-6 tw-py-3 tw-rounded tw-shadow hover:tw-shadow-lg tw-outline-none focus:tw-outline-none tw-mr-1 tw-mb-1 tw-ease-linear tw-transition-all tw-duration-150'>Process</a>
                                 </div>
                                 <div  className='tw-text-center'>
                                     <div className='tw-text-xl tw-font-bold tw-mb-3'>ENTER PREP</div>
-                                    <a href="" className='tw-inline-block tw-text-light tw-bg-primary tw-py-2 tw-px-4 tw-rounded-sm'>Timeline</a>
+                                    <a href="" className='tw-inline-block tw-bg-primary tw-text-white tw-font-bold tw-uppercase tw-text-sm tw-px-6 tw-py-3 tw-rounded tw-shadow hover:tw-shadow-lg tw-outline-none focus:tw-outline-none tw-mr-1 tw-mb-1 tw-ease-linear tw-transition-all tw-duration-150'>Timeline</a>
                                 </div>
                             </div>
                         </SplideSlide>
