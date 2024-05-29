@@ -3,7 +3,7 @@ import PageContext from './pageContext';
 import axios from "axios";
 
 export default function Modal({label, bg, fullWidth}) {
-  const [showModal, setShowModal] = useState(false);
+  const [status, setStatus] = useState('');
   const { popup, togglePopup} = useContext(PageContext);
 
   const [form, setForm] = useState({
@@ -33,9 +33,13 @@ export default function Modal({label, bg, fullWidth}) {
         "url": "https://hhmelements.com/contact/",
         "data": userData
     }).then((response) => {
+        if(response.data.status = "success"){
+            setStatus('Form submitted successfully!');
+            setTimeout(()=>{togglePopup(false);setStatus('');},3000);
+        }
         console.log(response);
     });
-    console.log(userData)
+    //console.log(userData)
     /*
     axios.post("https://reqres.in/api/login", userData).then((response) => {
       console.log(response.status, response.data.token);
@@ -49,7 +53,7 @@ export default function Modal({label, bg, fullWidth}) {
           <div
             className="tw-justify-center tw-items-center tw-flex tw-overflow-x-hidden tw-overflow-y-auto tw-fixed tw-inset-0 tw-z-50 tw-outline-none focus:tw-outline-none"
           >
-            <div className="tw-relative tw-w-auto tw-my-6 tw-mx-auto tw-max-w-3xl">
+            <div className="tw-relative tw-my-6 tw-mx-auto tw-w-full tw-max-w-xl">
               {/*content*/}
               <div className="tw-border-0 tw-rounded-lg tw-shadow-lg tw-relative tw-flex tw-flex-col tw-w-full tw-bg-white tw-outline-none focus:tw-outline-none">
                 {/*header*/}
@@ -67,6 +71,7 @@ export default function Modal({label, bg, fullWidth}) {
                   </button>
                 </div>
                 {/*body*/}
+                { !!!status ?
                 <form className="tw-px-8 tw-pb-8" onSubmit={handleSubmit}>
                     <div className="tw-grid tw-grid-cols-2 tw-gap-3 tw-mb-4">
                         <input name="firstName" className={`${!form.firstName_valid && form.firstName_changed ? 'tw-border-primary' : 'tw-border-darkBG'} tw-w-full tw-border  tw-p-2 tw-rounded-sm`}  placeholder="First name*" type="text" required value={form.firstName_value} onChange={(firstName)=>{
@@ -94,6 +99,9 @@ export default function Modal({label, bg, fullWidth}) {
                     </div>
                     <button type="submit" disabled={!form.firstName_valid || !form.lastName_valid || !form.email_valid} className={`${form.firstName_valid && form.lastName_valid && form.email_valid ? '' : 'tw-opacity-40'} tw-bg-darkBG tw-text-white tw-font-bold tw-uppercase tw-text-sm tw-px-6 tw-py-3 tw-rounded tw-shadow hover:tw-shadow-lg tw-outline-none focus:tw-outline-none tw-mr-1 tw-mb-1 tw-ease-linear tw-transition-all tw-duration-150`}>Submit</button>
                 </form>
+                : 
+                <div className='tw-px-8 tw-pb-8'>{status}</div>
+                }
               </div>
             </div>
           </div>
